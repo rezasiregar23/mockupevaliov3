@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evalio BBAP — EVALIO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+</head>
+<body class="bg-page font-sans leading-[normal] text-ink antialiased">
+  <div class="flex min-h-screen flex-col">
+
+    <!-- App Header / Evalio BBAP -->
+    <header class="border-b border-line bg-white">
+      <div class="mx-auto flex h-[71px] max-w-[1440px] items-center justify-between px-4 md:px-8 xl:px-[120px]">
+        <div class="flex items-center gap-3">
+          <a href="index.html" class="block h-7 w-[102px] shrink-0" aria-label="Kembali ke EVALIO Portal">
+            <img src="assets/img/logo-evalio.png" alt="EVALIO — Assessment Work by SAU" class="size-full object-cover" />
+          </a>
+          <span class="text-[22px] text-mist-300">/</span>
+          <div class="relative">
+            <button type="button" data-dropdown="dd-apps" class="group flex items-center gap-2.5 rounded-xl py-[5px] pl-1.5 pr-2.5 text-left transition hover:bg-page aria-expanded:bg-page">
+              <span class="grid size-[30px] shrink-0 place-items-center rounded-[9px] bg-[linear-gradient(135deg,#7fcdee_0%,#2a93d5_50%)]">
+                <img src="assets/icons/app-icon-clip-16.svg" alt="" width="16" height="16" />
+              </span>
+              <span class="flex flex-col whitespace-nowrap">
+                <span class="text-[10px] font-semibold text-brand-light">Aplikasi</span>
+                <span class="text-sm font-extrabold text-ink">Evalio BBAP</span>
+              </span>
+              <img src="assets/icons/icon-chev-bbap.svg" alt="" width="16" height="16" class="transition group-aria-expanded:rotate-180" />
+            </button>
+            <div id="dd-apps" data-panel class="dd-panel hidden left-0 w-[320px]"></div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span class="hidden rounded-full border border-line bg-page px-2.5 py-1.5 text-xs font-semibold text-ink-body md:inline-flex">PT Siaga Abdi Utama</span>
+          <div class="relative">
+            <button type="button" data-dropdown="dd-notif" aria-label="Notifikasi" class="relative block size-5 shrink-0 transition hover:opacity-70">
+              <img src="assets/icons/icon-bell.svg" alt="" width="20" height="20" />
+              <span data-unread-dot class="absolute -right-0.5 -top-0.5 size-2.5 rounded-full border-2 border-white bg-[#2ea9e2]"></span>
+            </button>
+            <div id="dd-notif" data-panel class="dd-panel hidden right-0 w-[360px]"></div>
+          </div>
+          <div class="relative">
+            <button type="button" data-dropdown="dd-profile" aria-label="Menu pengguna" class="block size-[34px] shrink-0 rounded-full transition hover:opacity-80">
+              <img src="assets/img/avatar-user-34.png" alt="Muhammad Hakim" width="34" height="34" />
+            </button>
+            <div id="dd-profile" data-panel class="dd-panel hidden right-0 w-[280px]"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- App Hero -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-sky-100 to-page xl:h-[224px]">
+      <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 left-1/2 hidden w-[1440px] -translate-x-1/2 lg:block">
+        <img src="assets/icons/decor-arcs-hero.svg" alt="" width="440" height="440" class="absolute left-[1060px] top-[-110px]" />
+        <img src="assets/icons/decor-ghost.svg" alt="" width="200" height="200" class="absolute left-[1140px] top-[10px]" />
+      </div>
+
+      <div class="relative mx-auto flex max-w-[1440px] flex-col items-start gap-3.5 px-4 pb-8 pt-8 md:px-8 xl:px-[120px] xl:pb-0">
+        <nav aria-label="Breadcrumb" class="flex items-center gap-2">
+          <img src="assets/icons/icon-grid-14.svg" alt="" width="14" height="14" />
+          <a href="index.html" class="whitespace-nowrap text-xs font-semibold text-ink-muted hover:text-brand">EVALIO Portal</a>
+          <img src="assets/icons/icon-chev-right.svg" alt="" width="14" height="14" />
+          <span aria-current="page" class="whitespace-nowrap text-xs font-bold text-brand">Evalio BBAP</span>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <span class="grid size-14 shrink-0 place-items-center rounded-[13px] bg-[linear-gradient(135deg,#7fcdee_0%,#2a93d5_50%)]">
+            <img src="assets/icons/icon-clip-28.svg" alt="" width="28" height="28" />
+          </span>
+          <div class="flex flex-col gap-0.5">
+            <h1 class="text-[32px] font-extrabold tracking-[-0.448px] text-brand">Evalio BBAP</h1>
+            <div class="flex items-center gap-2">
+              <p class="text-sm font-medium text-ink-body">Assessment &amp; Development</p>
+              <img src="assets/icons/ellipse-dot.svg" alt="" width="4" height="4" />
+            </div>
+          </div>
+        </div>
+
+        <label class="flex h-[50px] w-full max-w-[560px] items-center gap-3 rounded-[14px] border border-sky-150 bg-white pl-[18px] pr-2.5 shadow-search-sm transition focus-within:border-brand">
+          <img src="assets/icons/icon-search-18.svg" alt="" width="18" height="18" />
+          <input id="search" type="search" placeholder="Cari fitur di Evalio BBAP..." autocomplete="off"
+            class="min-w-0 flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink-muted" />
+        </label>
+      </div>
+    </section>
+
+    <!-- Body -->
+    <main class="mx-auto flex w-full max-w-[1440px] flex-1 flex-col items-start gap-7 px-4 pb-[60px] pt-3 md:px-8 xl:px-[120px]">
+      <div id="tabs" role="tablist" aria-label="Kategori fitur" class="flex max-w-full gap-1 overflow-x-auto rounded-xl border border-line bg-white p-1">
+        <button type="button" role="tab" data-tab="all" class="tab">Semua Fitur</button>
+        <button type="button" role="tab" data-tab="penilaian" class="tab">Penilaian</button>
+        <button type="button" role="tab" data-tab="kalibrasi" class="tab">Kalibrasi</button>
+        <button type="button" role="tab" data-tab="repository" class="tab">Repository</button>
+        <button type="button" role="tab" data-tab="administrasi" class="tab">Administrasi</button>
+      </div>
+
+      <div id="groups" class="flex w-full flex-col gap-7"></div>
+
+      <p id="empty-state" class="hidden w-full rounded-2xl border border-line bg-white px-5 py-8 text-center text-sm text-ink-body">
+        Tidak ada fitur yang cocok dengan pencarian Anda.
+      </p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-line bg-white">
+      <div class="mx-auto flex max-w-[1440px] items-start justify-between gap-4 px-4 py-5 text-xs font-medium md:px-8 xl:px-[120px]">
+        <p class="whitespace-pre text-ink-muted">© 2026 PT Siaga Abdi Utama  ·  EVALIO / BBAP</p>
+        <p class="whitespace-nowrap text-ink-body">Versi 2.0</p>
+      </div>
+    </footer>
+  </div>
+
+  <style type="text/tailwindcss">
+    .tab {
+      @apply shrink-0 whitespace-nowrap rounded-[9px] px-4 py-2 text-[13px] font-semibold text-ink-body transition hover:bg-page;
+    }
+    .tab[aria-selected="true"] {
+      @apply bg-ink font-bold text-white hover:bg-ink;
+    }
+    .dd-panel {
+      @apply absolute top-full z-40 mt-2 overflow-hidden rounded-2xl border border-line bg-white shadow-pop animate-pop-in max-sm:fixed max-sm:inset-x-4 max-sm:top-[76px] max-sm:w-auto;
+    }
+  </style>
+
+  <script src="assets/js/apps.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script>
+    const GROUPS = [
+      { title: 'Penilaian & Kalibrasi', features: [
+        { name: 'Penilaian BBAP',    desc: 'Kelola dan isi penilaian peserta',  icon: 'icon-clip-feature', tab: 'penilaian',  highlight: true },
+        { name: 'Kalibrasi BBAP',    desc: 'Sesi kalibrasi hasil penilaian',     icon: 'icon-sliders',      tab: 'kalibrasi' },
+        { name: 'Repository BBAP',   desc: 'Arsip hasil & dokumen assessment',  icon: 'icon-folder',       tab: 'repository' },
+        { name: 'Lampiran Peserta',  desc: 'Dokumen pendukung tiap peserta',    icon: 'icon-paperclip',    tab: 'repository' },
+      ]},
+      { title: 'Administrasi', features: [
+        { name: 'Data Peserta',      desc: 'Kelola peserta & batch',            icon: 'icon-users',        tab: 'administrasi' },
+        { name: 'Kompetensi',        desc: 'Kamus dan level kompetensi',        icon: 'icon-list-feature', tab: 'administrasi' },
+        { name: 'Jabatan & Formasi', desc: 'Struktur jabatan dan formasi',      icon: 'icon-org',          tab: 'administrasi' },
+        { name: 'Kelola Pengguna',   desc: 'Akses & peran pengguna',            icon: 'icon-user-cog',     tab: 'administrasi' },
+      ]},
+    ];
+
+    const state = { tab: 'all', query: '', loading: true };
+
+    // Highlighted card = the raised state shown on "Penilaian BBAP" in Figma; other cards get it on hover.
+    function featureHTML(f) {
+      const state = f.highlight
+        ? 'border-sky-150 shadow-feature'
+        : 'border-line hover:border-sky-150 hover:shadow-feature focus-visible:border-sky-150 focus-visible:shadow-feature';
+      return `
+        <a href="#" class="group/card flex items-center gap-3.5 rounded-2xl border bg-white p-4 outline-none transition ${state}">
+          <span class="grid size-[42px] shrink-0 place-items-center rounded-xl bg-sky-75">
+            <img src="assets/icons/${f.icon}.svg" alt="" width="20" height="20" />
+          </span>
+          <span class="flex min-w-0 flex-1 flex-col gap-0.5">
+            <span class="text-sm font-bold text-ink">${f.name}</span>
+            <span class="text-xs text-ink-body">${f.desc}</span>
+          </span>
+          <span class="relative size-4 shrink-0">
+            <img src="assets/icons/icon-arrow-sky.svg" alt="" width="16" height="16"
+              class="absolute inset-0 ${f.highlight ? '' : 'opacity-0 transition group-hover/card:opacity-100 group-focus-visible/card:opacity-100'}" />
+            ${f.highlight ? '' : `<img src="assets/icons/icon-arrow-muted.svg" alt="" width="16" height="16"
+              class="absolute inset-0 transition group-hover/card:opacity-0 group-focus-visible/card:opacity-0" />`}
+          </span>
+        </a>`;
+    }
+
+    // Placeholder with the same footprint as a feature card, shown until the icons are ready.
+    const skeletonFeatureHTML = () => `
+      <div aria-hidden="true" class="flex animate-pulse items-center gap-3.5 rounded-2xl border border-line bg-white p-4">
+        <span class="block size-[42px] shrink-0 rounded-xl bg-mist-50"></span>
+        <span class="flex flex-1 flex-col gap-2">
+          <span class="block h-3.5 w-3/5 rounded-md bg-mist-50"></span>
+          <span class="block h-3 w-4/5 rounded-md bg-mist-50"></span>
+        </span>
+      </div>`;
+
+    function render() {
+      const q = state.query.trim().toLowerCase();
+      const html = GROUPS.map(g => {
+        const items = g.features.filter(f =>
+          (state.tab === 'all' || f.tab === state.tab) &&
+          (!q || `${f.name} ${f.desc}`.toLowerCase().includes(q)));
+        if (!items.length) return '';
+        return `
+          <section class="flex flex-col gap-3.5">
+            <div class="flex items-center gap-2.5">
+              <h2 class="text-base font-extrabold tracking-[-0.064px] text-ink">${g.title}</h2>
+              <span class="rounded-full bg-mist-50 px-[7px] py-px text-[11px] font-bold text-ink-body">${items.length}</span>
+            </div>
+            <div class="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              ${items.map(state.loading ? skeletonFeatureHTML : featureHTML).join('')}
+            </div>
+          </section>`;
+      }).join('');
+
+      const groups = document.getElementById('groups');
+      groups.innerHTML = html;
+      groups.setAttribute('aria-busy', String(state.loading));
+      document.getElementById('empty-state').classList.toggle('hidden', html !== '');
+      document.querySelectorAll('[data-tab]').forEach(t =>
+        t.setAttribute('aria-selected', String(t.dataset.tab === state.tab)));
+    }
+
+    document.getElementById('tabs').addEventListener('click', e => {
+      const tab = e.target.closest('[data-tab]');
+      if (!tab) return;
+      state.tab = tab.dataset.tab;
+      render();
+    });
+
+    const search = document.getElementById('search');
+    search.addEventListener('input', () => { state.query = search.value; render(); });
+
+    // App switcher (header "Evalio BBAP ▾").
+    const CURRENT_APP = 'Evalio BBAP';
+
+    function renderAppSwitcher() {
+      document.getElementById('dd-apps').innerHTML = `
+        <p class="px-4 pb-1.5 pt-3.5 text-[11px] font-bold uppercase tracking-[0.6px] text-ink-muted">Pindah aplikasi</p>
+        <div class="max-h-[360px] overflow-y-auto p-1.5 pt-0">
+          ${APPS.map(app => {
+            const current = app.name === CURRENT_APP;
+            return `
+              <a ${current ? 'href="#"' : appLink(app)}
+                ${current ? 'aria-current="page" data-current-app' : ''}
+                class="flex items-center gap-3 rounded-lg px-2.5 py-2 transition hover:bg-page ${current ? 'bg-sky-50/70' : ''}">
+                <span class="grid size-[30px] shrink-0 place-items-center rounded-[9px] ${THEMES[app.theme].tile}">
+                  <img src="assets/icons/${app.icon}.svg" alt="" width="16" height="16" />
+                </span>
+                <span class="flex min-w-0 flex-1 flex-col">
+                  <span class="truncate text-[13px] font-bold text-ink">${app.name}</span>
+                  <span class="truncate text-[11px] font-medium text-ink-muted">${app.desc}</span>
+                </span>
+                ${current ? `<span class="text-brand">${UI.icon('check')}</span>`
+                  : app.sso ? '<span class="rounded-full bg-mist-50 px-1.5 py-px text-[10px] font-bold text-ink-body">SSO</span>' : ''}
+              </a>`;
+          }).join('')}
+        </div>
+        <div class="border-t border-line p-1.5">
+          <a href="index.html" class="flex items-center gap-3 rounded-lg px-2.5 py-2.5 text-[13px] font-bold text-brand transition hover:bg-page">
+            <img src="assets/icons/icon-grid.svg" alt="" width="16" height="16" />
+            Kembali ke EVALIO Portal
+          </a>
+        </div>`;
+    }
+
+    document.getElementById('dd-apps').addEventListener('click', e => {
+      if (!e.target.closest('[data-current-app]')) return;
+      e.preventDefault();
+      UI.closeDropdowns();
+    });
+
+    renderAppSwitcher();
+    render();
+    const featureIcons = [...new Set(GROUPS.flatMap(g => g.features.map(f => `assets/icons/${f.icon}.svg`)))];
+    UI.imagesReady([...featureIcons, 'assets/icons/icon-arrow-sky.svg', 'assets/icons/icon-arrow-muted.svg']).then(() => {
+      state.loading = false;
+      render();
+      document.querySelectorAll('#groups a').forEach(card => card.classList.add('animate-fade-in'));
+    });
+  </script>
+</body>
+</html>

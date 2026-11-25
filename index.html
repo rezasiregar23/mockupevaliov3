@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EVALIO Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="assets/js/apps.js"></script>
+  <script>preloadAppIcons();</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+</head>
+<body class="bg-page font-sans leading-[normal] text-ink antialiased">
+  <div class="flex min-h-screen flex-col">
+
+    <!-- Header -->
+    <header class="border-b border-line bg-white">
+      <div class="mx-auto flex h-[71px] max-w-[1440px] items-center justify-between px-4 md:px-8 xl:px-[120px]">
+        <div class="flex items-center gap-[14px]">
+          <a href="index.html" class="block h-8 w-[116px] shrink-0">
+            <img src="assets/img/logo-evalio.png" alt="EVALIO — Assessment Work by SAU" class="size-full object-cover" />
+          </a>
+          <div class="hidden h-6 w-px bg-line sm:block"></div>
+          <div class="hidden items-center gap-1.5 rounded-[10px] bg-sky-50 py-1.5 pl-2.5 pr-3 sm:flex">
+            <img src="assets/icons/icon-grid.svg" alt="" width="16" height="16" />
+            <span class="text-sm font-bold text-brand">Portal</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <button type="button" data-dropdown="dd-notif" aria-label="Notifikasi" class="block size-10 shrink-0 rounded-xl transition hover:brightness-95 aria-expanded:brightness-95">
+              <img data-notif-icon data-src-unread="assets/icons/notification.svg" data-src-read="assets/icons/notification-read.svg"
+                src="assets/icons/notification.svg" alt="" width="40" height="40" />
+            </button>
+            <div id="dd-notif" data-panel class="dd-panel hidden right-0 w-[360px]"></div>
+          </div>
+
+          <div class="relative hidden md:block">
+            <button type="button" data-dropdown="dd-org" class="group flex items-center gap-2.5 rounded-xl border border-line bg-white py-[5px] pl-1.5 pr-3 text-left transition hover:border-sky-300 aria-expanded:border-sky-300">
+              <span data-org-initials class="grid size-8 shrink-0 place-items-center rounded-[9px] bg-[linear-gradient(135deg,#1a6fdb_0%,#063f96_50%)] text-xs font-extrabold text-white">SA</span>
+              <span class="flex flex-col whitespace-nowrap">
+                <span class="text-[11px] font-medium text-ink-muted">Organisasi</span>
+                <span data-org-name class="text-[13px] font-bold text-ink">PT Siaga Abdi Utama</span>
+              </span>
+              <img src="assets/icons/icon-chev.svg" alt="" width="16" height="16" class="transition group-aria-expanded:rotate-180" />
+            </button>
+            <div id="dd-org" data-panel class="dd-panel hidden right-0 w-[300px]"></div>
+          </div>
+
+          <div class="hidden h-6 w-px bg-line md:block"></div>
+
+          <div class="relative">
+            <button type="button" data-dropdown="dd-profile" aria-label="Menu pengguna" class="group flex items-center gap-2.5 rounded-xl text-left transition hover:opacity-80">
+              <img src="assets/img/avatar-user.png" alt="Muhammad Hakim" width="36" height="36" class="size-9 shrink-0" />
+              <span class="hidden flex-col whitespace-nowrap sm:flex">
+                <span class="text-sm font-bold text-ink">Muhammad Hakim</span>
+                <span class="text-xs font-medium text-ink-muted">Administrator</span>
+              </span>
+              <img src="assets/icons/icon-chev.svg" alt="" width="16" height="16" class="transition group-aria-expanded:rotate-180" />
+            </button>
+            <div id="dd-profile" data-panel class="dd-panel hidden right-0 w-[280px]"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative h-auto overflow-hidden bg-gradient-to-b from-sky-100 to-page xl:h-[320px]">
+      <!-- Decorations, positioned on the 1440px design frame -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 left-1/2 hidden w-[1440px] -translate-x-1/2 lg:block">
+        <img src="assets/icons/decor-brand-chevrons.svg" alt="" width="520" height="420" class="absolute left-[1010px] top-[-70px]" />
+        <img src="assets/icons/decor-dots.svg" alt="" width="104" height="62" class="absolute left-[60px] top-[200px]" />
+        <div class="hidden xl:block">
+          <img src="assets/img/evalio-orbit-static.png" data-deferred-src="assets/img/evalio-orbit.webp" alt="" class="absolute left-[941px] top-[4px] h-[319px] w-[318px] object-cover" />
+          <div class="absolute left-[1162px] top-[-125px] flex h-[351.802px] w-[420.656px] items-center justify-center">
+            <img src="assets/img/illus-idea.png" alt="" class="h-[216.448px] w-[362.767px] rotate-[25.56deg] object-contain" />
+          </div>
+          <div class="absolute left-[873.84px] top-[210px] flex h-[39.63px] w-[60.787px] items-center justify-center">
+            <img src="assets/img/illus-target.png" alt="" class="h-7 w-14 rotate-[12.7deg] object-contain" />
+          </div>
+          <div class="absolute left-[1264.76px] top-[196px] flex size-[58.731px] items-center justify-center">
+            <img src="assets/img/illus-reminders.png" alt="" class="size-[52px] rotate-[8deg] object-contain" />
+          </div>
+        </div>
+      </div>
+
+      <div class="relative mx-auto max-w-[1440px] px-4 pb-10 pt-11 md:px-8 xl:px-[120px] xl:pb-0">
+        <div class="inline-flex max-w-full items-center gap-2 rounded-full border border-sky-200 bg-white py-1.5 pl-2.5 pr-3">
+          <img src="assets/icons/icon-building.svg" alt="" width="14" height="14" />
+          <span data-org-name class="whitespace-nowrap text-xs font-semibold text-brand">PT Siaga Abdi Utama</span>
+          <img src="assets/icons/ellipse-dot.svg" alt="" width="4" height="4" />
+          <span class="truncate text-xs font-medium text-ink-body"><span data-count="total">8</span> aplikasi tersedia untuk Anda</span>
+        </div>
+
+        <h1 class="mt-[18px] text-[28px] font-extrabold leading-[38px] tracking-[-0.54px] text-ink-strong md:text-4xl md:leading-[46px]">
+          <span class="text-brand">Selamat datang di</span>
+          <span class="whitespace-nowrap"><span class="relative isolate inline-block text-white">
+            <img src="assets/icons/hero-vector.svg" alt="" width="135" height="46.9399" class="absolute left-1/2 top-1/2 -z-10 h-[1.3em] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 md:h-[46.94px]" />EVALIO</span><span class="text-brand">, Hakim</span></span> 👋
+        </h1>
+
+        <p class="mt-2 text-base leading-6 text-ink-body">Kelola berbagai kebutuhan assessment melalui satu portal.</p>
+
+        <label class="mt-7 flex h-14 w-full max-w-[640px] items-center gap-3 rounded-2xl border border-sky-200 bg-white pl-5 pr-2.5 shadow-search transition focus-within:border-brand">
+          <img src="assets/icons/icon-search.svg" alt="" width="20" height="20" />
+          <input id="search" type="search" placeholder="Cari aplikasi atau fitur..." autocomplete="off"
+            class="min-w-0 flex-1 bg-transparent text-[15px] text-ink outline-none placeholder:text-ink-muted" />
+        </label>
+
+        <div class="mt-3.5 flex flex-wrap items-center gap-2">
+          <span class="text-xs font-medium text-ink-muted">Sering dicari:</span>
+          <button type="button" data-suggest="Kalibrasi" class="rounded-full border border-line bg-white/70 px-2.5 py-1 text-xs font-medium text-ink-body transition hover:border-sky-300 hover:text-brand">Kalibrasi</button>
+          <button type="button" data-suggest="Penilaian" class="rounded-full border border-line bg-white/70 px-2.5 py-1 text-xs font-medium text-ink-body transition hover:border-sky-300 hover:text-brand">Penilaian</button>
+          <button type="button" data-suggest="Data Peserta" class="rounded-full border border-line bg-white/70 px-2.5 py-1 text-xs font-medium text-ink-body transition hover:border-sky-300 hover:text-brand">Data Peserta</button>
+          <button type="button" data-suggest="Repository" class="rounded-full border border-line bg-white/70 px-2.5 py-1 text-xs font-medium text-ink-body transition hover:border-sky-300 hover:text-brand">Repository</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Body -->
+    <main class="mx-auto w-full max-w-[1440px] flex-1 px-4 pb-14 pt-2 md:px-8 xl:px-[120px]">
+      <section class="flex flex-col gap-5" aria-labelledby="apps-title">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div class="flex flex-col gap-1">
+            <div class="flex items-center gap-2.5">
+              <h2 id="apps-title" class="text-2xl font-extrabold tracking-[-0.24px] text-ink">Aplikasi Saya</h2>
+              <span data-count="total" class="rounded-full bg-sky-50 px-2 py-0.5 text-xs font-bold text-brand">8</span>
+            </div>
+            <p class="text-sm text-ink-body">Aplikasi EVALIO yang tersedia untuk Anda di <span data-org-name>PT Siaga Abdi Utama</span>.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="flex gap-0.5 rounded-[10px] border border-line bg-white p-[3px]" role="group" aria-label="Tampilan">
+              <button type="button" data-view-btn="grid" aria-label="Tampilan grid" aria-pressed="true" class="rounded-lg px-2 py-1.5 transition aria-pressed:bg-sky-50 hover:bg-sky-50">
+                <img src="assets/icons/icon-grid.svg" alt="" width="16" height="16" />
+              </button>
+              <button type="button" data-view-btn="list" aria-label="Tampilan daftar" aria-pressed="false" class="rounded-lg px-2 py-1.5 transition aria-pressed:bg-sky-50 hover:bg-sky-50">
+                <img src="assets/icons/icon-list.svg" alt="" width="16" height="16" />
+              </button>
+            </div>
+            <a href="#" class="flex items-center gap-1.5 rounded-[10px] border border-line bg-white py-2 pl-3.5 pr-3 text-[13px] font-bold text-brand transition hover:border-sky-300">
+              <span>Lihat Semua (<span data-count="total">8</span>)</span>
+              <img src="assets/icons/icon-arrow.svg" alt="" width="14" height="14" />
+            </a>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2" id="filters">
+          <button type="button" data-filter="all" class="filter-chip"><span>Semua · <span data-count="total">8</span></span></button>
+          <button type="button" data-filter="pinned" class="filter-chip gap-1.5">
+            <img src="assets/icons/pin-fill.svg" alt="" width="16" height="16" />
+            <span>Disematkan · <span id="pinned-count">3</span></span>
+          </button>
+          <button type="button" data-filter="assessment" class="filter-chip"><span>Assessment · <span data-count="assessment">3</span></span></button>
+          <button type="button" data-filter="recruitment" class="filter-chip"><span>Recruitment · <span data-count="recruitment">2</span></span></button>
+          <button type="button" data-filter="kalibrasi" class="filter-chip"><span>Kalibrasi · <span data-count="kalibrasi">1</span></span></button>
+          <button type="button" data-filter="repository" class="filter-chip"><span>Repository · <span data-count="repository">2</span></span></button>
+          <p class="text-xs text-ink-muted" id="result-info">Menampilkan 8 dari 8 aplikasi · urut: terakhir dibuka</p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <div id="app-grid" data-view="grid" class="group grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 data-[view=list]:!grid-cols-1"></div>
+
+          <p id="empty-state" class="hidden rounded-[18px] border border-line bg-white px-5 py-8 text-center text-sm text-ink-body">
+            Tidak ada aplikasi yang cocok dengan pencarian Anda.
+          </p>
+
+          <div class="rounded-[20px] border border-line bg-white px-6 py-[22px]">
+            <button type="button" id="request-access" class="flex w-full items-center gap-2.5 rounded-xl border border-dashed border-sky-300 px-3.5 py-3 text-left transition hover:bg-sky-50/50">
+              <img src="assets/icons/icon-plusc.svg" alt="" width="18" height="18" />
+              <span class="flex min-w-0 flex-1 flex-col">
+                <span class="text-[13px] font-bold text-ink">Butuh aplikasi EVALIO lain?</span>
+                <span class="text-xs text-ink-body">Ajukan akses ke administrator organisasi Anda.</span>
+              </span>
+              <span class="flex items-center gap-1.5 text-xs font-bold text-brand">
+                Ajukan
+                <img src="assets/icons/icon-arrow.svg" alt="" width="14" height="14" />
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-line bg-white">
+      <div class="mx-auto flex max-w-[1440px] flex-col gap-3 px-4 py-5 text-xs font-medium md:flex-row md:items-center md:justify-between md:px-8 xl:px-[120px]">
+        <p class="text-ink-muted">© 2026 <span data-org-name class="text-brand">PT Siaga Abdi Utama</span>&nbsp; · &nbsp;EVALIO — Assessment Work by SAU</p>
+        <nav class="flex gap-5 whitespace-nowrap text-ink-body">
+          <a href="#" data-soon="Pusat Bantuan" class="hover:text-brand">Pusat Bantuan</a>
+          <a href="#" data-soon="Kebijakan Privasi" class="hover:text-brand">Kebijakan Privasi</a>
+          <span>Versi 2.0</span>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <style type="text/tailwindcss">
+    .filter-chip {
+      @apply flex items-center rounded-full border border-line bg-white px-3.5 py-[7px] text-[13px] font-semibold text-ink-body transition hover:border-sky-300;
+    }
+    .filter-chip[aria-pressed="true"] {
+      @apply border-ink bg-ink font-bold text-white;
+    }
+    .filter-chip[aria-pressed="true"] img { @apply brightness-0 invert; }
+    .dd-panel {
+      @apply absolute top-full z-40 mt-2 overflow-hidden rounded-2xl border border-line bg-white shadow-pop animate-pop-in max-sm:fixed max-sm:inset-x-4 max-sm:top-[76px] max-sm:w-auto;
+    }
+  </style>
+
+  <script src="assets/js/ui.js"></script>
+  <script>
+    const state = { filter: 'all', query: '', view: 'grid', loading: true };
+    const grid = document.getElementById('app-grid');
+
+    function cardHTML(app, i) {
+      const t = THEMES[app.theme];
+      return `
+        <article class="relative overflow-hidden rounded-[18px] border border-line bg-white shadow-card transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-card-hover">
+          <img src="assets/icons/${t.arcs}.svg" alt="" width="120" height="120" class="pointer-events-none absolute right-[-31px] top-[-41px]" />
+          <a ${appLink(app)} class="relative flex flex-col gap-3.5 px-5 pb-[18px] pt-5 group-data-[view=list]:flex-row group-data-[view=list]:items-center group-data-[view=list]:py-4 group-data-[view=list]:pr-14">
+            <span class="grid size-11 shrink-0 place-items-center rounded-[13px] ${t.tile}">
+              <img src="assets/icons/${app.icon}.svg" alt="" width="22" height="22" />
+            </span>
+            <span class="flex w-full items-center justify-between gap-3">
+              <span class="flex min-w-0 flex-col gap-0.5">
+                <span class="truncate text-base font-extrabold tracking-[-0.08px] text-ink">${app.name}</span>
+                <span class="truncate text-xs font-medium text-ink-body">${app.desc}</span>
+              </span>
+              <span class="grid size-7 shrink-0 place-items-center rounded-[9px] ${t.btn}">
+                <img src="assets/icons/${t.arrow}.svg" alt="" width="16" height="16" />
+              </span>
+            </span>
+          </a>
+          <button type="button" data-pin="${i}" aria-pressed="${app.pinned}"
+            aria-label="${app.pinned ? 'Lepas sematan' : 'Sematkan'} ${app.name}"
+            class="pin-btn absolute right-5 top-5 size-4 transition group-data-[view=list]:right-[22px] group-data-[view=list]:top-3 ${app.pinned ? '' : 'opacity-0 grayscale focus-visible:opacity-40 [article:hover_&]:opacity-40'}">
+            <img src="assets/icons/pin-fill.svg" alt="" width="16" height="16" />
+          </button>
+        </article>`;
+    }
+
+    // Placeholder with the same footprint as a card, shown until the icons are ready.
+    const skeletonCardHTML = () => `
+      <div aria-hidden="true" class="rounded-[18px] border border-line bg-white px-5 pb-[18px] pt-5 shadow-card group-data-[view=list]:py-4">
+        <div class="flex animate-pulse flex-col gap-3.5 group-data-[view=list]:flex-row group-data-[view=list]:items-center">
+          <span class="block size-11 shrink-0 rounded-[13px] bg-mist-50"></span>
+          <span class="flex w-full items-center justify-between gap-3">
+            <span class="flex flex-1 flex-col gap-2">
+              <span class="block h-4 w-3/5 rounded-md bg-mist-50"></span>
+              <span class="block h-3 w-4/5 rounded-md bg-mist-50"></span>
+            </span>
+            <span class="block size-7 shrink-0 rounded-[9px] bg-mist-50"></span>
+          </span>
+        </div>
+      </div>`;
+
+    function render() {
+      const q = state.query.trim().toLowerCase();
+      const visible = APPS.map((app, i) => ({ app, i })).filter(({ app }) => {
+        if (state.filter === 'pinned' && !app.pinned) return false;
+        if (!['all', 'pinned'].includes(state.filter) && app.category !== state.filter) return false;
+        return !q || `${app.name} ${app.desc}`.toLowerCase().includes(q);
+      });
+
+      grid.innerHTML = state.loading
+        ? visible.map(skeletonCardHTML).join('')
+        : visible.map(({ app, i }) => cardHTML(app, i)).join('');
+      grid.dataset.view = state.view;
+      grid.setAttribute('aria-busy', String(state.loading));
+      document.getElementById('empty-state').classList.toggle('hidden', state.loading || visible.length > 0);
+      document.getElementById('result-info').textContent = state.loading
+        ? 'Memuat aplikasi…'
+        : `Menampilkan ${visible.length} dari ${APPS.length} aplikasi · urut: terakhir dibuka`;
+      document.getElementById('pinned-count').textContent = APPS.filter(a => a.pinned).length;
+      document.querySelectorAll('[data-count]').forEach(el => {
+        const key = el.dataset.count;
+        el.textContent = key === 'total' ? APPS.length : APPS.filter(a => a.category === key).length;
+      });
+
+      document.querySelectorAll('[data-filter]').forEach(btn =>
+        btn.setAttribute('aria-pressed', String(btn.dataset.filter === state.filter)));
+      document.querySelectorAll('[data-view-btn]').forEach(btn =>
+        btn.setAttribute('aria-pressed', String(btn.dataset.viewBtn === state.view)));
+    }
+
+    document.getElementById('filters').addEventListener('click', e => {
+      const btn = e.target.closest('[data-filter]');
+      if (!btn) return;
+      state.filter = btn.dataset.filter;
+      render();
+    });
+
+    document.querySelectorAll('[data-view-btn]').forEach(btn =>
+      btn.addEventListener('click', () => { state.view = btn.dataset.viewBtn; render(); }));
+
+    grid.addEventListener('click', e => {
+      const btn = e.target.closest('[data-pin]');
+      if (!btn) return;
+      const app = APPS[btn.dataset.pin];
+      app.pinned = !app.pinned;
+      render();
+    });
+
+    const search = document.getElementById('search');
+    search.addEventListener('input', () => { state.query = search.value; render(); });
+    document.querySelectorAll('[data-suggest]').forEach(btn =>
+      btn.addEventListener('click', () => {
+        search.value = btn.dataset.suggest;
+        state.query = search.value;
+        render();
+        search.focus();
+      }));
+
+    // Organisation switcher (header).
+    const ORGS = [
+      { name: 'PT Siaga Abdi Utama',     initials: 'SA' },
+      { name: 'PT Abdi Karya Nusantara', initials: 'AK' },
+      { name: 'PT Mitra Talenta Prima',  initials: 'MT' },
+    ];
+    let activeOrg = 0;
+    const orgPanel = document.getElementById('dd-org');
+
+    function renderOrgs() {
+      orgPanel.innerHTML = `
+        <p class="px-4 pb-1.5 pt-3.5 text-[11px] font-bold uppercase tracking-[0.6px] text-ink-muted">Pilih organisasi</p>
+        <div class="p-1.5 pt-0">
+          ${ORGS.map((o, i) => `
+            <button type="button" data-org="${i}" class="flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left transition hover:bg-page ${i === activeOrg ? 'bg-sky-50/70' : ''}">
+              <span class="grid size-8 shrink-0 place-items-center rounded-[9px] bg-[linear-gradient(135deg,#1a6fdb_0%,#063f96_50%)] text-xs font-extrabold text-white">${o.initials}</span>
+              <span class="flex min-w-0 flex-1 flex-col">
+                <span class="truncate text-[13px] font-bold text-ink">${o.name}</span>
+                <span class="text-[11px] font-medium text-ink-muted">${i === activeOrg ? 'Organisasi aktif' : 'Beralih ke organisasi ini'}</span>
+              </span>
+              ${i === activeOrg ? `<span class="text-brand">${UI.icon('check')}</span>` : ''}
+            </button>`).join('')}
+        </div>`;
+      document.querySelectorAll('[data-org-name]').forEach(el => { el.textContent = ORGS[activeOrg].name; });
+      document.querySelectorAll('[data-org-initials]').forEach(el => { el.textContent = ORGS[activeOrg].initials; });
+    }
+
+    orgPanel.addEventListener('click', e => {
+      const btn = e.target.closest('[data-org]');
+      if (!btn) return;
+      UI.closeDropdowns();
+      if (Number(btn.dataset.org) === activeOrg) return;
+      activeOrg = Number(btn.dataset.org);
+      renderOrgs();
+      UI.toast(`Beralih ke ${ORGS[activeOrg].name}`);
+    });
+
+    // "Ajukan" — request access to another EVALIO app.
+    document.getElementById('request-access').addEventListener('click', () => {
+      const modal = UI.openModal({
+        title: 'Ajukan akses aplikasi',
+        desc: 'Pengajuan akan dikirim ke administrator organisasi Anda untuk ditinjau.',
+        width: 'max-w-[480px]',
+        body: `
+          <form class="mt-5 flex flex-col gap-4" novalidate>
+            <label class="flex flex-col gap-1.5">
+              <span class="text-xs font-bold text-ink">Aplikasi</span>
+              <select name="app" autofocus class="h-11 rounded-xl border border-line bg-white px-3 text-sm text-ink outline-none transition focus:border-brand">
+                ${REQUESTABLE_APPS.map(a => `<option>${a}</option>`).join('')}
+              </select>
+            </label>
+            <label class="flex flex-col gap-1.5">
+              <span class="text-xs font-bold text-ink">Alasan kebutuhan</span>
+              <textarea name="reason" rows="3" placeholder="Contoh: dibutuhkan untuk proses assessment batch November."
+                class="resize-none rounded-xl border border-line px-3 py-2.5 text-sm text-ink outline-none transition placeholder:text-ink-muted focus:border-brand"></textarea>
+              <span data-error class="hidden text-xs font-medium text-red-600">Alasan minimal 10 karakter.</span>
+            </label>
+            <div class="mt-2 flex justify-end gap-2.5">
+              <button type="button" data-modal-close class="rounded-xl border border-line px-4 py-2.5 text-[13px] font-bold text-ink-body transition hover:border-sky-300">Batal</button>
+              <button type="submit" class="rounded-xl bg-brand px-4 py-2.5 text-[13px] font-bold text-white transition hover:brightness-110">Kirim Pengajuan</button>
+            </div>
+          </form>`,
+      });
+      const form = modal.el.querySelector('form');
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const app = form.app.value;
+        const valid = form.reason.value.trim().length >= 10;
+        form.querySelector('[data-error]').classList.toggle('hidden', valid);
+        form.reason.classList.toggle('!border-red-500', !valid);
+        if (!valid) { form.reason.focus(); return; }
+        modal.close();
+        UI.toast(`Pengajuan akses ${app} terkirim`);
+        UI.notify({ title: 'Pengajuan akses terkirim', body: `Menunggu persetujuan administrator untuk ${app}.` });
+      });
+    });
+
+    // Heavy decorative animation loads after everything else so icons aren't queued behind it.
+    window.addEventListener('load', () => {
+      document.querySelectorAll('img[data-deferred-src]').forEach(img => {
+        const full = new Image();
+        full.onload = () => { img.src = full.src; };
+        full.src = img.dataset.deferredSrc;
+      });
+    });
+
+    renderOrgs();
+    render();
+    UI.imagesReady(appIconUrls()).then(() => {
+      state.loading = false;
+      render();
+      grid.querySelectorAll('article').forEach(card => card.classList.add('animate-fade-in'));
+    });
+  </script>
+</body>
+</html>
