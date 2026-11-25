@@ -1,0 +1,140 @@
+/* App cards on the portal grid — one identity per category.
+   Selectors are scoped under .app-card so Tailwind's preflight (injected later
+   by the CDN script) can't override them. */
+
+.cat-assessment  { --c-light:#3d97f2; --c-deep:#0a3f9e; --c-tile:#0b4aa8; --c-tint:#eaf3ff; --c-border:#d5e5fa; --c-motif:#2f7fe3; --c-tag:#1d66cf; --c-tag-bg:#e3eefd; --c-go:#e6f0fd; }
+.cat-recruitment { --c-light:#9c88ff; --c-deep:#4b27c8; --c-tile:#5531d8; --c-tint:#f0edff; --c-border:#dfd8fc; --c-motif:#6e50f0; --c-tag:#5b3be0; --c-tag-bg:#ece8ff; --c-go:#ede9ff; }
+.cat-kalibrasi   { --c-light:#f8b84a; --c-deep:#b45309; --c-tile:#c2620c; --c-tint:#fff4e3; --c-border:#f7e2bf; --c-motif:#e38b14; --c-tag:#b25d05; --c-tag-bg:#fdeed3; --c-go:#fdefd9; }
+.cat-repository  { --c-light:#2cc7b4; --c-deep:#0b6b63; --c-tile:#0f766e; --c-tint:#e3f7f4; --c-border:#c6ede7; --c-motif:#14a394; --c-tag:#0d8277; --c-tag-bg:#d9f3ef; --c-go:#dcf4f0; }
+
+/* Category dot on the filter chips. */
+.filter-chip .cat-dot { width:8px; height:8px; margin-right:6px; flex-shrink:0; border-radius:999px; background:var(--c-motif); }
+.filter-chip[aria-pressed="true"] .cat-dot { box-shadow:0 0 0 2px rgba(255,255,255,.35); }
+
+/* ---- Card ---------------------------------------------------------------- */
+.app-card {
+  --paper:#fff;
+  position:relative; isolation:isolate; overflow:hidden;
+  min-height:154px; border-radius:20px;
+  border:1px solid var(--c-border);
+  background:
+    radial-gradient(180px 160px at 100% 0%, var(--c-tint), transparent 72%),
+    linear-gradient(135deg, #fff 35%, var(--c-tint) 100%);
+  box-shadow:0 1px 2px rgba(10,31,69,.04), 0 8px 20px -10px color-mix(in srgb, var(--c-deep) 22%, transparent);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.app-card:hover {
+  transform:translateY(-2px);
+  border-color:color-mix(in srgb, var(--c-motif) 45%, #fff);
+  box-shadow:0 1px 2px rgba(10,31,69,.04), 0 16px 32px -12px color-mix(in srgb, var(--c-deep) 30%, transparent);
+}
+
+.app-card .app-card__motif,
+.app-card .app-card__spark { position:absolute; inset:0; z-index:-1; pointer-events:none; }
+.app-card .app-card__motif { color:var(--c-motif); opacity:.34; transition:opacity .2s ease, transform .4s ease; }
+.app-card:hover .app-card__motif { opacity:.5; transform:translateX(-4px); }
+.app-card .app-card__motif svg,
+.app-card .app-card__spark svg { display:block; width:100%; height:100%; }
+
+.app-card .app-card__link {
+  display:flex; flex-direction:column; justify-content:space-between; gap:12px;
+  min-height:154px; padding:18px 18px 16px;
+  color:inherit; text-decoration:none; border-radius:inherit; outline:none;
+}
+.app-card .app-card__link:focus-visible { box-shadow:inset 0 0 0 2px var(--c-motif); }
+
+.app-card .app-card__tile {
+  display:grid; place-items:center; flex-shrink:0;
+  width:44px; height:44px; border-radius:14px;
+  background:linear-gradient(135deg, var(--c-light), var(--c-tile));
+  box-shadow:0 6px 14px -4px color-mix(in srgb, var(--c-tile) 45%, transparent), inset 0 1px 0 rgba(255,255,255,.35);
+}
+
+.app-card .app-card__body { display:flex; align-items:flex-end; justify-content:space-between; gap:12px; min-width:0; }
+.app-card .app-card__text { display:flex; flex-direction:column; min-width:0; }
+.app-card .app-card__tag {
+  display:inline-flex; align-items:center; gap:5px; align-self:flex-start;
+  margin-bottom:7px; padding:3px 8px 3px 7px; border-radius:999px;
+  background:var(--c-tag-bg); color:var(--c-tag);
+  font-size:10px; font-weight:700; line-height:13px; letter-spacing:.08em; text-transform:uppercase;
+}
+.app-card .app-card__dot { width:6px; height:6px; border-radius:999px; background:var(--c-motif); }
+.app-card .app-card__title {
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  font-size:16px; font-weight:800; line-height:20px; letter-spacing:-.005em; color:#0b2a5b;
+}
+.app-card .app-card__desc {
+  margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  font-size:12px; font-weight:500; line-height:15px; color:#4c6589;
+}
+.app-card .app-card__go {
+  display:grid; place-items:center; flex-shrink:0;
+  width:28px; height:28px; border-radius:9px;
+  background:var(--c-go); color:var(--c-tile);
+  transition:transform .18s ease;
+}
+.app-card:hover .app-card__go { transform:translateX(2px); }
+
+/* Pin toggle: a small button on hover for normal cards, a badge on pinned ones. */
+.app-card .app-card__pin {
+  position:absolute; top:18px; right:18px;
+  display:inline-flex; align-items:center; justify-content:center; gap:4px;
+  height:26px; min-width:26px; padding:0 6px; border-radius:999px;
+  border:1px solid var(--c-border); background:rgba(255,255,255,.92); color:var(--c-tile);
+  font-size:11px; font-weight:700; letter-spacing:.01em;
+  opacity:0; cursor:pointer; transition:opacity .15s ease, scale .15s ease;
+}
+.app-card .app-card__pin span { display:none; }
+.app-card:hover .app-card__pin,
+.app-card .app-card__pin:focus-visible { opacity:1; }
+.app-card .app-card__pin:hover { scale:1.06; }
+
+/* ---- Pinned: full category gradient, glass icon, white badge, sparkles ---- */
+.app-card.is-pinned {
+  border-color:rgba(255,255,255,.3);
+  background:
+    radial-gradient(200px 170px at 0% 0%, rgba(255,255,255,.35), transparent 70%),
+    linear-gradient(135deg, var(--c-light), var(--c-deep));
+  box-shadow:0 2px 4px color-mix(in srgb, var(--c-deep) 12%, transparent), 0 16px 30px -12px color-mix(in srgb, var(--c-deep) 45%, transparent);
+}
+.app-card.is-pinned:hover {
+  border-color:rgba(255,255,255,.5);
+  box-shadow:0 2px 4px color-mix(in srgb, var(--c-deep) 12%, transparent), 0 22px 40px -14px color-mix(in srgb, var(--c-deep) 55%, transparent);
+}
+.app-card.is-pinned .app-card__motif { color:#fff; opacity:.24; }
+.app-card.is-pinned:hover .app-card__motif { opacity:.32; }
+.app-card.is-pinned .app-card__spark { color:#fff; opacity:.9; }
+.app-card.is-pinned .app-card__tile {
+  background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.5);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  box-shadow:0 6px 14px -4px color-mix(in srgb, var(--c-deep) 40%, transparent), inset 0 1px 0 rgba(255,255,255,.4);
+}
+.app-card.is-pinned .app-card__tag { background:rgba(255,255,255,.2); color:#fff; }
+.app-card.is-pinned .app-card__dot { background:#fff; }
+.app-card.is-pinned .app-card__title { color:#fff; }
+.app-card.is-pinned .app-card__desc { color:rgba(255,255,255,.85); }
+.app-card.is-pinned .app-card__go {
+  background:#fff; color:var(--c-deep);
+  box-shadow:0 3px 8px -2px color-mix(in srgb, var(--c-deep) 35%, transparent);
+}
+.app-card.is-pinned .app-card__pin {
+  opacity:1; padding:0 10px 0 8px; border-color:transparent;
+  background:#fff; color:var(--c-deep);
+  box-shadow:0 4px 10px -2px color-mix(in srgb, var(--c-deep) 40%, transparent);
+}
+.app-card.is-pinned .app-card__pin span { display:inline; }
+
+/* ---- List view ----------------------------------------------------------- */
+[data-view="list"] .app-card,
+[data-view="list"] .app-card .app-card__link { min-height:0; }
+[data-view="list"] .app-card .app-card__link { flex-direction:row; align-items:center; gap:16px; padding:14px 18px; }
+[data-view="list"] .app-card .app-card__body { flex:1; align-items:center; }
+[data-view="list"] .app-card .app-card__text { margin-right:120px; }
+[data-view="list"] .app-card .app-card__go { margin-left:auto; }
+[data-view="list"] .app-card .app-card__motif { opacity:.22; }
+[data-view="list"] .app-card .app-card__pin { top:50%; right:62px; translate:0 -50%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .app-card, .app-card * { transition:none !important; }
+  .app-card:hover { transform:none; }
+}
