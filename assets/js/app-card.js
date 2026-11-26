@@ -71,7 +71,7 @@ function appCardHTML(app, i) {
   const cat = CATEGORIES[app.category] || CATEGORIES.assessment;
   const pinLabel = app.pinned ? 'Lepas sematan' : 'Sematkan';
   return `
-    <article class="app-card cat-${app.category}${app.pinned ? ' is-pinned' : ''}">
+    <article data-app="${i}" class="app-card cat-${app.category}${app.pinned ? ' is-pinned' : ''}">
       <span class="app-card__motif" aria-hidden="true">${MOTIFS[app.category] || ''}</span>
       ${app.pinned ? `<span class="app-card__spark" aria-hidden="true">${SPARKLES}</span>` : ''}
       <a ${appLink(app)} class="app-card__link">

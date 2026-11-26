@@ -12,6 +12,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="assets/js/tailwind-config.js"></script>
   <link rel="stylesheet" href="assets/css/app-card.css" />
+  <link rel="stylesheet" href="assets/css/hero-orbit.css" />
   <script src="assets/js/app-card.js"></script>
 </head>
 <body class="bg-page font-sans leading-[normal] text-ink antialiased">
@@ -76,7 +77,27 @@
         <img src="assets/icons/decor-brand-chevrons.svg" alt="" width="520" height="420" class="absolute left-[1010px] top-[-70px]" />
         <img src="assets/icons/decor-dots.svg" alt="" width="104" height="62" class="absolute left-[60px] top-[200px]" />
         <div class="hidden xl:block">
-          <img src="assets/img/evalio-orbit-static.png" data-deferred-src="assets/img/evalio-orbit.webp" alt="" class="absolute left-[941px] top-[4px] h-[319px] w-[318px] object-cover" />
+          <div class="hero-orbit" aria-hidden="true">
+            <svg class="hero-orbit__ring" viewBox="0 0 476 477"><circle cx="238" cy="225" r="177" /></svg>
+            <div class="hero-orbit__spin">
+              <span class="hero-orbit__dot" style="--a:-132deg"></span>
+              <span class="hero-orbit__sat cat-recruitment" style="--a:-150deg; --d:0s"><span class="hero-orbit__upright"><span class="hero-orbit__item"><span class="hero-orbit__halo"><span class="hero-orbit__tile"><img src="assets/icons/icon-cap.svg" alt="" /></span></span><span class="hero-orbit__label">BFLP</span></span></span></span>
+              <span class="hero-orbit__sat cat-assessment" style="--a:-30deg; --d:-1.3s"><span class="hero-orbit__upright"><span class="hero-orbit__item"><span class="hero-orbit__halo"><span class="hero-orbit__tile"><img src="assets/icons/icon-clip.svg" alt="" /></span></span><span class="hero-orbit__label">BBAP</span></span></span></span>
+              <span class="hero-orbit__sat is-add" style="--a:30deg; --d:-2s"><span class="hero-orbit__upright"><span class="hero-orbit__item"><span class="hero-orbit__halo">+</span></span></span></span>
+              <span class="hero-orbit__sat cat-assessment" style="--a:90deg; --d:-2.6s"><span class="hero-orbit__upright"><span class="hero-orbit__item"><span class="hero-orbit__halo"><span class="hero-orbit__tile"><img src="assets/icons/icon-gauge.svg" alt="" /></span></span><span class="hero-orbit__label">Capacity</span></span></span></span>
+            </div>
+            <div class="hero-orbit__core">
+              <span class="hero-orbit__ripple"></span><span class="hero-orbit__ripple r2"></span>
+              <div class="hero-orbit__character">
+                <img class="hero-orbit__body" src="assets/img/hero/character-body.png" alt="" width="228" height="292" />
+                <img class="hero-orbit__hands" src="assets/img/hero/character-hands.png" alt="" width="50" height="57" />
+              </div>
+            </div>
+            <span class="hero-orbit__bubble">Halo! <span class="wave-hand">👋</span></span>
+            <span class="hero-orbit__spark" style="left:146px; top:58px; --d:0s"><svg viewBox="0 0 24 24"><path d="M12 0Q14.2 9.8 24 12Q14.2 14.2 12 24Q9.8 14.2 0 12Q9.8 9.8 12 0Z" fill="currentColor"/></svg></span>
+            <span class="hero-orbit__spark" style="left:340px; top:150px; width:16px; height:16px; --d:-1s"><svg viewBox="0 0 24 24"><path d="M12 0Q14.2 9.8 24 12Q14.2 14.2 12 24Q9.8 14.2 0 12Q9.8 9.8 12 0Z" fill="currentColor"/></svg></span>
+            <span class="hero-orbit__spark" style="left:112px; top:300px; width:14px; height:14px; --d:-1.9s"><svg viewBox="0 0 24 24"><path d="M12 0Q14.2 9.8 24 12Q14.2 14.2 12 24Q9.8 14.2 0 12Q9.8 9.8 12 0Z" fill="currentColor"/></svg></span>
+          </div>
           <div class="absolute left-[1162px] top-[-125px] flex h-[351.802px] w-[420.656px] items-center justify-center">
             <img src="assets/img/illus-idea.png" alt="" class="h-[216.448px] w-[362.767px] rotate-[25.56deg] object-contain" />
           </div>
@@ -100,7 +121,7 @@
         <h1 class="mt-[18px] text-[28px] font-extrabold leading-[38px] tracking-[-0.54px] text-ink-strong md:text-4xl md:leading-[46px]">
           <span class="text-brand">Selamat datang di</span>
           <span class="whitespace-nowrap"><span class="relative isolate inline-block text-white">
-            <img src="assets/icons/hero-vector.svg" alt="" width="135" height="46.9399" class="absolute left-1/2 top-1/2 -z-10 h-[1.3em] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 md:h-[46.94px]" />EVALIO</span><span class="text-brand">, Hakim</span></span> 👋
+            <img src="assets/icons/hero-vector.svg" alt="" width="135" height="46.9399" class="absolute left-1/2 top-1/2 -z-10 h-[1.3em] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 md:h-[46.94px]" />EVALIO</span><span class="text-brand">, Hakim</span></span> <span class="wave-hand">👋</span>
         </h1>
 
         <p class="mt-2 text-base leading-6 text-ink-body">Kelola berbagai kebutuhan assessment melalui satu portal.</p>
@@ -240,7 +261,7 @@
         if (state.filter === 'pinned' && !app.pinned) return false;
         if (!['all', 'pinned'].includes(state.filter) && app.category !== state.filter) return false;
         return !q || `${app.name} ${app.desc}`.toLowerCase().includes(q);
-      });
+      }).sort((a, b) => Number(b.app.pinned) - Number(a.app.pinned));
 
       grid.innerHTML = state.loading
         ? visible.map(skeletonCardHTML).join('')
@@ -273,12 +294,34 @@
     document.querySelectorAll('[data-view-btn]').forEach(btn =>
       btn.addEventListener('click', () => { state.view = btn.dataset.viewBtn; render(); }));
 
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
     grid.addEventListener('click', e => {
       const btn = e.target.closest('[data-pin]');
       if (!btn) return;
-      const app = APPS[btn.dataset.pin];
+      const id = btn.dataset.pin;
+      const app = APPS[id];
+      const before = new Map([...grid.querySelectorAll('[data-app]')].map(el => [el.dataset.app, el.getBoundingClientRect()]));
       app.pinned = !app.pinned;
       render();
+      grid.querySelector(`[data-pin="${id}"]`)?.focus({ preventScroll: true });
+      UI.toast(app.pinned ? `${app.name} disematkan di atas` : `Sematan ${app.name} dilepas`);
+      if (reduceMotion.matches) return;
+      // Slide every card from its old spot to the new one; the toggled card also pops.
+      grid.querySelectorAll('[data-app]').forEach(el => {
+        const from = before.get(el.dataset.app);
+        if (!from) return;
+        const to = el.getBoundingClientRect();
+        const dx = from.left - to.left, dy = from.top - to.top;
+        const moved = dx || dy;
+        const isToggled = el.dataset.app === id;
+        if (!moved && !isToggled) return;
+        el.animate([
+          { transform: `translate(${dx}px, ${dy}px)${isToggled ? ' scale(.96)' : ''}` },
+          ...(isToggled ? [{ transform: `translate(${dx * .15}px, ${dy * .15}px) scale(1.03)`, offset: .7 }] : []),
+          { transform: 'none' },
+        ], { duration: isToggled ? 560 : 460, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      });
     });
 
     const search = document.getElementById('search');
@@ -365,15 +408,6 @@
         modal.close();
         UI.toast(`Pengajuan akses ${app} terkirim`);
         UI.notify({ title: 'Pengajuan akses terkirim', body: `Menunggu persetujuan administrator untuk ${app}.` });
-      });
-    });
-
-    // Heavy decorative animation loads after everything else so icons aren't queued behind it.
-    window.addEventListener('load', () => {
-      document.querySelectorAll('img[data-deferred-src]').forEach(img => {
-        const full = new Image();
-        full.onload = () => { img.src = full.src; };
-        full.src = img.dataset.deferredSrc;
       });
     });
 

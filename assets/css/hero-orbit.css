@@ -1,0 +1,123 @@
+/* Hero illustration — character greeting with orbiting apps.
+   Built on the 476×477 source frame and scaled into the 318px hero slot,
+   so every coordinate below is in source pixels. */
+
+.hero-orbit {
+  position:absolute; left:941px; top:4px;
+  width:476px; height:477px;
+  transform:scale(.668); transform-origin:0 0;
+  pointer-events:none;
+}
+.hero-orbit * { box-sizing:border-box; }
+
+/* Dashed orbit ring, slowly drifting. */
+.hero-orbit .hero-orbit__ring { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+.hero-orbit .hero-orbit__ring circle {
+  fill:none; stroke:#a9cbe8; stroke-width:2; stroke-dasharray:9 10; stroke-linecap:round;
+  animation:hero-dash 6s linear infinite;
+}
+
+/* Apps travelling around the ring (kept upright by a counter-rotation). */
+.hero-orbit .hero-orbit__spin { position:absolute; inset:0; animation:hero-spin 36s linear infinite; }
+.hero-orbit .hero-orbit__sat {
+  position:absolute; left:238px; top:225px; width:0; height:0;
+  transform:rotate(var(--a)) translateX(177px) rotate(calc(var(--a) * -1));
+}
+.hero-orbit .hero-orbit__upright { position:absolute; left:0; top:0; width:0; height:0; animation:hero-spin 36s linear infinite reverse; }
+.hero-orbit .hero-orbit__item {
+  position:absolute; left:0; top:0;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  transform:translate(-50%, -35px);
+}
+.hero-orbit .hero-orbit__halo {
+  display:grid; place-items:center; width:70px; height:70px; border-radius:22px;
+  background:rgba(255,255,255,.6); border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 8px 22px -10px rgba(10,63,158,.35);
+  animation:hero-bob 4s ease-in-out infinite; animation-delay:var(--d, 0s);
+}
+.hero-orbit .hero-orbit__tile {
+  display:grid; place-items:center; width:50px; height:50px; border-radius:15px;
+  background:linear-gradient(135deg, var(--c-light), var(--c-tile));
+  box-shadow:0 8px 16px -6px color-mix(in srgb, var(--c-tile) 55%, transparent), inset 0 1px 0 rgba(255,255,255,.35);
+}
+.hero-orbit .hero-orbit__tile img { width:26px; height:26px; }
+.hero-orbit .hero-orbit__label { font-size:15px; font-weight:700; color:#4c6589; white-space:nowrap; text-shadow:0 1px 0 rgba(255,255,255,.8); }
+.hero-orbit .hero-orbit__sat.is-add .hero-orbit__halo {
+  width:54px; height:54px; border-radius:16px; margin-top:8px;
+  background:rgba(255,255,255,.35); border:2px dashed #7fb6e3; box-shadow:none;
+  color:#2a8fc7; font-size:30px; font-weight:500; line-height:1;
+}
+.hero-orbit .hero-orbit__dot {
+  position:absolute; left:238px; top:225px; width:14px; height:14px; margin:-7px 0 0 -7px; border-radius:50%;
+  background:#2a93d5; box-shadow:0 0 0 4px rgba(255,255,255,.85), 0 0 12px rgba(42,147,213,.6);
+  transform:rotate(var(--a)) translateX(177px);
+}
+
+/* Character + white disc float together; ripples pulse behind. */
+.hero-orbit .hero-orbit__core { position:absolute; inset:0; animation:hero-float 5s ease-in-out infinite; }
+.hero-orbit .hero-orbit__ripple {
+  position:absolute; left:125px; top:112px; width:226px; height:226px; border-radius:50%;
+  border:2px solid rgba(42,147,213,.35);
+  animation:hero-ripple 3.6s ease-out infinite;
+}
+.hero-orbit .hero-orbit__ripple.r2 { animation-delay:1.8s; }
+.hero-orbit .hero-orbit__character { position:absolute; left:124px; top:48px; width:228px; height:292px; }
+.hero-orbit .hero-orbit__body { display:block; width:228px; height:292px; }
+/* Palms pressed together sway in a "salam" greeting, pivoting at the wrists. */
+.hero-orbit .hero-orbit__hands {
+  position:absolute; left:75px; top:136px; width:50px; height:57px;
+  transform-origin:22px 56px;
+  animation:hero-namaste 3.6s ease-in-out infinite;
+}
+
+/* "Halo!" bubble pops in, waves, and hides again. */
+.hero-orbit .hero-orbit__bubble {
+  position:absolute; left:284px; top:40px;
+  display:flex; align-items:center; gap:6px;
+  padding:10px 18px 10px 20px; border-radius:999px 999px 999px 8px;
+  background:#fff; color:#0957c3; font-size:24px; font-weight:800; letter-spacing:-.01em;
+  box-shadow:0 12px 28px -10px rgba(10,63,158,.4);
+  transform-origin:0 100%;
+  animation:hero-bubble 8s cubic-bezier(.3,1.4,.5,1) infinite;
+}
+.hero-orbit .hero-orbit__bubble .wave-hand { font-size:26px; }
+
+/* Twinkling sparkles. */
+.hero-orbit .hero-orbit__spark {
+  position:absolute; width:22px; height:22px; color:#2a93d5;
+  animation:hero-twinkle 2.8s ease-in-out infinite; animation-delay:var(--d, 0s);
+}
+.hero-orbit .hero-orbit__spark svg { display:block; width:100%; height:100%; }
+
+/* Waving 👋 — used in the bubble and in the page title. */
+.wave-hand { display:inline-block; transform-origin:70% 75%; animation:hero-wave 2.2s ease-in-out infinite; }
+
+@keyframes hero-spin    { to { transform:rotate(360deg); } }
+@keyframes hero-dash    { to { stroke-dashoffset:-38; } }
+@keyframes hero-bob     { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-5px); } }
+@keyframes hero-float   { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+@keyframes hero-ripple  { 0% { transform:scale(1); opacity:.9; } 100% { transform:scale(1.32); opacity:0; } }
+@keyframes hero-namaste {
+  0%, 56%, 100% { transform:rotate(0) translateY(0); }
+  10% { transform:rotate(-6deg) translateY(-2px); }
+  22% { transform:rotate(5deg) translateY(-2px); }
+  34% { transform:rotate(-3.5deg) translateY(-1px); }
+  45% { transform:rotate(1.5deg) translateY(0); }
+}
+@keyframes hero-bubble {
+  0%, 4%   { transform:scale(.3); opacity:0; }
+  10%, 68% { transform:scale(1); opacity:1; }
+  74%, 100% { transform:scale(.6) translateY(6px); opacity:0; }
+}
+@keyframes hero-twinkle { 0%,100% { transform:scale(.4) rotate(0); opacity:0; } 50% { transform:scale(1) rotate(45deg); opacity:1; } }
+@keyframes hero-wave {
+  0%, 60%, 100% { transform:rotate(0); }
+  10% { transform:rotate(18deg); } 20% { transform:rotate(-8deg); }
+  30% { transform:rotate(16deg); } 40% { transform:rotate(-4deg); } 50% { transform:rotate(10deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orbit *, .wave-hand { animation:none !important; }
+  .hero-orbit .hero-orbit__bubble { opacity:1; transform:none; }
+  .hero-orbit .hero-orbit__ripple, .hero-orbit .hero-orbit__spark { display:none; }
+}
