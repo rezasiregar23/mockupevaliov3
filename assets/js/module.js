@@ -360,8 +360,8 @@ function tableModule(cfg) {
   function actionButtons(r) {
     const b = {
       download: `<button type="button" data-act="download" data-id="${r.id}" class="md-btn md-btn--soft md-btn--sm">${ico('download', 'size-3.5')} Download</button>`,
-      edit:     `<button type="button" data-act="edit" data-id="${r.id}" class="md-btn md-btn--sm bg-[#fff3e0] text-[#b45309] hover:bg-[#ffe6c2]" aria-label="Edit ${h(r.name || r.position || r.code)}">${ico('edit', 'size-3.5')} Edit</button>`,
-      delete:   `<button type="button" data-act="delete" data-id="${r.id}" class="md-btn md-btn--sm bg-[#fdecec] text-[#c2261d] hover:bg-[#fbd5d5]" aria-label="Hapus ${h(r.name || r.position || r.code)}">${ico('trash', 'size-3.5')} Hapus</button>`,
+      edit:     `<button type="button" data-act="edit" data-id="${r.id}" title="Edit" class="md-btn md-btn--sm w-8 px-0 bg-[#fff3e0] text-[#b45309] hover:bg-[#ffe6c2]" aria-label="Edit ${h(r.name || r.position || r.code)}">${ico('edit', 'size-3.5')}</button>`,
+      delete:   `<button type="button" data-act="delete" data-id="${r.id}" title="Hapus" class="md-btn md-btn--sm w-8 px-0 bg-[#fdecec] text-[#c2261d] hover:bg-[#fbd5d5]" aria-label="Hapus ${h(r.name || r.position || r.code)}">${ico('trash', 'size-3.5')}</button>`,
       remind:   `<button type="button" data-act="remind" data-id="${r.id}" class="md-btn md-btn--soft md-btn--sm" ${r.stage === 'Selesai' ? 'disabled' : ''}>${ico('bell', 'size-3.5')} Ingatkan</button>`,
     };
     return `<div class="flex justify-center gap-1.5">${cfg.rowActions.map(a => b[a]).join('')}</div>`;
