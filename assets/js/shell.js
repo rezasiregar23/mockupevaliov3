@@ -3,6 +3,10 @@
 
 const PARAMS = new URLSearchParams(location.search);
 
+// Absolute url() for CSS masks: a relative url() inside a custom property would
+// resolve against the stylesheet (assets/css/), not the page.
+const iconURL = name => `url("${new URL(`assets/icons/${name}.svg`, location.href).href}")`;
+
 function escapeHTML(value) {
   return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
 }

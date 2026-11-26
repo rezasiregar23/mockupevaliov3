@@ -10,7 +10,7 @@ const h = escapeHTML;
 document.title = `${FEATURE.name} — ${APP.name} — EVALIO`;
 document.querySelectorAll('[data-module-name]').forEach(el => { el.textContent = FEATURE.name; });
 document.querySelectorAll('[data-module-desc]').forEach(el => { el.textContent = FEATURE.desc; });
-document.getElementById('module-icon').style.setProperty('--icon', `url(assets/icons/${FEATURE.icon}.svg)`);
+document.getElementById('module-icon').style.setProperty('--icon', iconURL(FEATURE.icon));
 
 /* ---------- Icons ---------------------------------------------------------- */
 
