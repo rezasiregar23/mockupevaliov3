@@ -41,7 +41,7 @@
 /* Every card has the same footprint: 1-line title, up to 2 lines of
    description; anything longer ends in "…" (full text in the tooltip). */
 .ws-feature {
-  position:relative; display:flex; align-items:center; gap:14px; height:88px; padding:0 16px;
+  position:relative; display:flex; align-items:center; gap:12px; height:88px; padding:0 14px;
   border-radius:18px; border:1px solid #dceaf4; background:#fff; outline:none;
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
@@ -50,15 +50,18 @@
   border-color:color-mix(in srgb, var(--c-motif) 45%, #fff);
   box-shadow:0 14px 28px -14px color-mix(in srgb, var(--c-deep) 35%, transparent);
 }
+.ws-feature__text { display:flex; flex:1; min-width:0; flex-direction:column; gap:4px; padding-right:14px; }
 .ws-feature__title { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:14px; font-weight:700; line-height:20px; color:#0b2a5b; }
 .ws-feature__desc {
   display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2; overflow:hidden;
   font-size:12px; line-height:16px; color:#4c6589;
 }
-.ws-feature__icon { display:grid; place-items:center; width:44px; height:44px; flex-shrink:0; border-radius:13px; background:var(--c-tag-bg); transition:background .18s ease; }
+.ws-feature__icon { display:grid; place-items:center; width:40px; height:40px; flex-shrink:0; border-radius:12px; background:var(--c-tag-bg); transition:background .18s ease; }
 .ws-feature:hover .ws-feature__icon { background:linear-gradient(135deg, var(--c-light), var(--c-tile)); }
 .ws-feature:hover .ws-feature__icon .ws-icon { background:#fff; }
-.ws-feature__go { display:grid; place-items:center; width:28px; height:28px; flex-shrink:0; border-radius:9px; color:#86a0be; transition:all .18s ease; }
+/* Arrow sits in the corner so the text gets the full width. */
+.ws-feature__go { position:absolute; top:8px; right:8px; display:grid; place-items:center; width:24px; height:24px; border-radius:8px; color:#a9bdd3; transition:all .18s ease; }
+.ws-feature__go svg { width:14px; height:14px; }
 .ws-feature:hover .ws-feature__go { background:var(--c-go); color:var(--c-tile); transform:translateX(2px); }
 .ws-feature.is-primary { border-color:color-mix(in srgb, var(--c-motif) 40%, #fff); box-shadow:0 10px 24px -14px color-mix(in srgb, var(--c-deep) 30%, transparent); }
 .ws-feature.is-primary .ws-feature__go { background:var(--c-go); color:var(--c-tile); }
