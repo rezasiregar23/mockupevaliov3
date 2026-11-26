@@ -103,11 +103,11 @@
 
     function featureHTML(ft, primary) {
       return `
-        <a href="${moduleUrl(APP.id, ft.module)}" class="ws-feature animate-fade-in${primary ? ' is-primary' : ''}">
+        <a href="${moduleUrl(APP.id, ft.module)}" title="${ft.name} — ${ft.desc}" class="ws-feature animate-fade-in${primary ? ' is-primary' : ''}">
           <span class="ws-feature__icon"><span class="ws-icon" style="--icon:${iconURL(ft.icon)}"></span></span>
-          <span class="flex min-w-0 flex-1 flex-col gap-0.5">
-            <span class="text-sm font-bold text-ink">${ft.name}</span>
-            <span class="text-xs text-ink-body">${ft.desc}</span>
+          <span class="flex min-w-0 flex-1 flex-col gap-1">
+            <span class="ws-feature__title">${ft.name}</span>
+            <span class="ws-feature__desc">${ft.desc}</span>
           </span>
           <span class="ws-feature__go">${ARROW}</span>
         </a>`;
@@ -126,7 +126,7 @@
               <h2 class="text-base font-extrabold tracking-[-0.064px] text-ink">${g.title}</h2>
               <span class="rounded-full bg-[var(--c-tag-bg)] px-[7px] py-px text-[11px] font-bold text-[var(--c-tag)]">${items.length}</span>
             </div>
-            <div class="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               ${items.map(ft => featureHTML(ft, gi === 0 && ft === WS.groups[0].features[0])).join('')}
             </div>
           </section>`;
