@@ -9,26 +9,25 @@ const THEMES = {
 };
 
 const APPS = [
-  { name: 'Evalio BBAP',       desc: 'Assessment & Development',   icon: 'icon-clip',   theme: 'sky',    category: 'assessment',  pinned: true, href: 'bbap.html', ready: true },
-  { name: 'Evalio BFLP',       desc: 'Assessment & Recruitment',   icon: 'icon-cap',    theme: 'blue',   category: 'recruitment', pinned: true, href: 'assessment_bflp/dev_layout' },
-  { name: 'Evalio Capacity',   desc: 'Talent Capacity Assessment', icon: 'icon-gauge',  theme: 'indigo', category: 'assessment',  pinned: true, href: 'https://evalio.sauwork.co.id/api-talent-capacity/', sso: true },
-  { name: 'Kalibrasi BFLP',    desc: 'Kalibrasi Hasil Assessment', icon: 'icon-scale',       theme: 'navy',   category: 'kalibrasi',  pinned: false, href: 'assessment_bflp_kalibrasi/dev_layout' },
-  { name: 'Repository BFLP',   desc: 'Arsip Hasil Assessment BFLP', icon: 'icon-archive',     theme: 'sky',    category: 'repository', pinned: false, href: 'repository_bflp/repo' },
-  { name: 'Repository SPV',    desc: 'Arsip Hasil Supervisor',     icon: 'icon-folder-user', theme: 'blue',   category: 'repository', pinned: false, href: 'repository' },
-  { name: 'QA UKO',            desc: 'Quality Assurance UKO',      icon: 'icon-shield-check', theme: 'indigo', category: 'assessment', pinned: false },
-  { name: 'Monitoring BFLP',   desc: 'Monitoring Assessment BFLP', icon: 'icon-activity',    theme: 'navy',   category: 'recruitment', pinned: false },
+  { id: 'bbap',       name: 'Evalio BBAP',       desc: 'Assessment & Development',    icon: 'icon-clip',         theme: 'sky',    category: 'assessment',  pinned: true },
+  { id: 'bflp',       name: 'Evalio BFLP',       desc: 'Assessment & Recruitment',    icon: 'icon-cap',          theme: 'blue',   category: 'recruitment', pinned: true },
+  { id: 'capacity',   name: 'Evalio Capacity',   desc: 'Talent Capacity Assessment',  icon: 'icon-gauge',        theme: 'indigo', category: 'assessment',  pinned: true, ssoUrl: 'https://evalio.sauwork.co.id/api-talent-capacity/' },
+  { id: 'kalibrasi-bflp',  name: 'Kalibrasi BFLP',  desc: 'Kalibrasi Hasil Assessment',  icon: 'icon-scale',        theme: 'navy',   category: 'kalibrasi',   pinned: false },
+  { id: 'repository-bflp', name: 'Repository BFLP', desc: 'Arsip Hasil Assessment BFLP', icon: 'icon-archive',      theme: 'sky',    category: 'repository',  pinned: false },
+  { id: 'repository-spv',  name: 'Repository SPV',  desc: 'Arsip Hasil Supervisor',      icon: 'icon-folder-user',  theme: 'blue',   category: 'repository',  pinned: false },
+  { id: 'qa-uko',     name: 'QA UKO',            desc: 'Quality Assurance UKO',       icon: 'icon-shield-check', theme: 'indigo', category: 'assessment',  pinned: false },
+  { id: 'monitoring-bflp', name: 'Monitoring BFLP', desc: 'Monitoring Assessment BFLP',  icon: 'icon-activity',     theme: 'navy',   category: 'recruitment', pinned: false },
 ];
 
-// Link attributes for an app. Only apps with a mockup page (`ready`) navigate;
-// the rest show a "segera hadir" toast via ui.js [data-soon].
-const appLink = app => app.ready
-  ? `href="${app.href}"${app.sso ? ' target="_blank" rel="noopener"' : ''}`
-  : `href="#" data-soon="Halaman ${app.name}"`;
+const appById = id => APPS.find(app => app.id === id);
+const appUrl = app => `app.html?id=${app.id}`;
+
+// Every app opens its detail page (workspace).
+const appLink = app => `href="${appUrl(app)}"`;
 
 // The portal grid is rendered by JS, so the browser can't discover the card icons
 // until then. Call this from <head> to start fetching them with the first requests.
-const appIconUrls = () => [...new Set(APPS.flatMap(app => [app.icon, THEMES[app.theme].arcs, THEMES[app.theme].arrow]))]
-  .map(file => `assets/icons/${file}.svg`);
+const appIconUrls = () => [...new Set(APPS.map(app => app.icon))].map(file => `assets/icons/${file}.svg`);
 
 function preloadAppIcons() {
   for (const href of appIconUrls()) {
